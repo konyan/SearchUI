@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import JsonData from '../../data/leaderboard.json';
 
-interface Data {
+export interface Data {
   bananas: number;
   lastDayPlayed: string;
   longestStreak: number;

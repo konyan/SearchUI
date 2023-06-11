@@ -7,6 +7,7 @@ import AppLoader from 'src/screens/AppLoader';
 export default function App() {
   return (
     <AppLoader>
+      <CustomStatusBar backgroundColor="#F9F8F7" />
       <ScrollView
         style={[
           tw`flex`,
@@ -14,8 +15,9 @@ export default function App() {
             backgroundColor: '#F9F8F7',
           },
         ]}
+        scrollEnabled
+        showsVerticalScrollIndicator={false}
       >
-        <CustomStatusBar backgroundColor="#F9F8F7" />
         <HomeScreen />
       </ScrollView>
     </AppLoader>

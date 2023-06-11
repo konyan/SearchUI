@@ -7,18 +7,17 @@ interface SearchBarProps {
   placeholder: string;
   value: string;
   onChangeText: (value: string) => void;
+  onSearch: () => void;
 }
 
-const SearchBar = ({ placeholder, value, onChangeText }: SearchBarProps) => {
+const SearchBar = ({ placeholder, value, onChangeText, onSearch }: SearchBarProps) => {
   const searchInputRef = useRef<TextInput | null>(null);
 
   return (
     <View
       style={tw`w-full flex-row justify-between items-center mt-2 relative border-black rounded-[10px] border-[1.5px] bg-white`}
     >
-      <View style={tw`mx-4`}>
-        <SearchIcon color="black" />
-      </View>
+      <View style={tw`mx-4`}></View>
       <TextInput
         testID="SEARCH.INPUT"
         style={[
@@ -33,13 +32,11 @@ const SearchBar = ({ placeholder, value, onChangeText }: SearchBarProps) => {
       />
       {value.length > 0 && (
         <TouchableOpacity
-          testID="BUTTON.CLEAR"
-          style={tw`flex-1 items-end justify-end mr-4`}
-          onPress={() => {
-            onChangeText('');
-          }}
+          testID="BUTTON.SEARCH"
+          style={tw`items-center justify-center mr-4 rounded-full bg-red-500 w-10 h-10`}
+          onPress={onSearch}
         >
-          <CloseIcon />
+          <SearchIcon color="white" />
         </TouchableOpacity>
       )}
     </View>

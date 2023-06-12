@@ -14,9 +14,9 @@ const AppLoader = ({ children }: AppLoaderProps) => {
   const [appIsReady, setAppIsReady] = useState(false);
 
   const [iconFontLoaded] = useFonts({
-    'FiraMono-Regular': require('../../assets/fonts/FiraMono-Regular.ttf'),
-    'FiraMono-Medium': require('../../assets/fonts/FiraMono-Medium.ttf'),
-    'FiraMono-Bold': require('../../assets/fonts/FiraMono-Bold.ttf'),
+    'FiraMono-Regular': require('../../../assets/fonts/FiraMono-Regular.ttf'),
+    'FiraMono-Medium': require('../../../assets/fonts/FiraMono-Medium.ttf'),
+    'FiraMono-Bold': require('../../../assets/fonts/FiraMono-Bold.ttf'),
   });
 
   useEffect(() => {

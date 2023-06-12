@@ -1,5 +1,6 @@
-![alt text](/assets/homescreen.png)
-
+<p align="center">
+<img src="/assets/homescreen.png" alt="home screen search">
+</p>
 # Search UI
 
 This is a search UI built with React Native Expo that allows users to search for items by name or username. The UI displays a list of search results and allows users to click on each item to view more details.
@@ -45,6 +46,10 @@ To run the tests, use the following command:
 ```
 yarn test
 ```
+
+current test result
+
+<img src="/assets/TestResult.png" width="400" alt="Test result">
 
 ## Contributing
 

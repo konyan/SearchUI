@@ -2,7 +2,7 @@ import { CustomStatusBar } from '@components';
 import { tw } from '@core';
 import { HomeScreen } from '@screens';
 import { View } from 'react-native';
-import AppLoader from 'src/screens/AppLoader';
+import AppLoader from 'src/screens/AppLoader/AppLoader';
 
 export default function App() {
   return (

@@ -17,12 +17,13 @@ const HomeScreen = () => {
       />
 
       {loading && (
-        <View style={tw`flex-1 w-full z-10 justify-center items-center absolute top-40`}>
+        <View testID="loading_ui" style={tw`flex-1 w-full z-10 justify-center items-center absolute top-40`}>
           <PacmanIndicator color="red" />
         </View>
       )}
       {error && <ErrorModal error={error} setModalVisible={closeErrorModal} />}
       <FlatList
+        testID="flat_list"
         style={tw`w-full mb-8`}
         scrollEnabled={true}
         showsVerticalScrollIndicator={false}

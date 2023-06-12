@@ -45,6 +45,7 @@ const config: Config.InitialOptions = {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png)$': 'identity-obj-proxy',
   },
+  resolver: undefined,
 };
 
 module.exports = config;

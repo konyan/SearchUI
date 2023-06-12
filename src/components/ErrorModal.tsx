@@ -9,14 +9,7 @@ interface ErrorModalProps {
 const ErrorModal = ({ error, setModalVisible }: ErrorModalProps) => {
   return (
     <View style={tw`flex-1 justify-center items-center`}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={error}
-        onRequestClose={() => {
-          setModalVisible(!error);
-        }}
-      >
+      <Modal animationType="slide" transparent={true} visible={error}>
         <View style={[tw`mt-40 items-center w-80 mx-auto flex p-4 bg-white`, styles.modalView]}>
           <Text style={styles.modalText} testID="txt_title">
             This user name does not exist! Please specify an existing user name!

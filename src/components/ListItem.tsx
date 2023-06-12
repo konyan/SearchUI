@@ -1,3 +1,4 @@
+import BananaImage from '@assets/images/banana.png';
 import { tw } from '@core';
 import React from 'react';
 import { Image, Text, View } from 'react-native';
@@ -18,13 +19,19 @@ const ListItem = ({ name, rank, bananaCount, isSearchResult }: ListItemProps) =>
       ]}
     >
       <View style={tw`flex w-1/4 rounded-full bg-red-500 w-8 h-8 justify-center items-center mx-2`}>
-        <Text style={tw`font-FiraMono-Medium text-base`}>{rank && rank}</Text>
+        <Text style={tw`font-FiraMono-Medium text-base`} testID="txt_rank">
+          {rank && rank}
+        </Text>
       </View>
       <View style={tw`flex w-3/4 p-2`}>
-        <Text style={tw`text-xl font-FiraMono-Bold`}>{name}</Text>
+        <Text style={tw`text-xl font-FiraMono-Bold`} testID="txt_name">
+          {name}
+        </Text>
         <View style={tw`flex-row justify-start items-center`}>
-          <Image source={require('../../assets/images/banana.png')} style={tw`w-4 h-4`} />
-          <Text style={tw`mt-1 ml-2 text-base font-FiraMono-Medium`}>{bananaCount}</Text>
+          <Image source={BananaImage} style={tw`w-4 h-4`} />
+          <Text style={tw`mt-1 ml-2 text-base font-FiraMono-Medium`} testID="txt_banana">
+            {bananaCount}
+          </Text>
         </View>
       </View>
     </View>

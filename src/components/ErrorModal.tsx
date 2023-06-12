@@ -1,5 +1,4 @@
 import { tw } from '@core';
-import React from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface ErrorModalProps {
@@ -19,8 +18,14 @@ const ErrorModal = ({ error, setModalVisible }: ErrorModalProps) => {
         }}
       >
         <View style={[tw`mt-40 items-center w-80 mx-auto flex p-4 bg-white`, styles.modalView]}>
-          <Text style={styles.modalText}>This user name does not exist! Please specify an existing user name!</Text>
-          <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!error)}>
+          <Text style={styles.modalText} testID="txt_title">
+            This user name does not exist! Please specify an existing user name!
+          </Text>
+          <Pressable
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setModalVisible(!error)}
+            testID="btn_close"
+          >
             <Text style={styles.textStyle}>Close</Text>
           </Pressable>
         </View>

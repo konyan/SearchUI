@@ -15,6 +15,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^5.59.9",
     "eslint-config-prettier": "8.5.0",
     "expo": "~48.0.18",
     "expo-splash-screen": "~0.18.2",
@@ -26,6 +27,7 @@
     "react-native-indicators": "^0.17.0",
     "react-native-reanimated": "~2.14.4",
     "react-native-svg": "13.4.0",
+    "ts-node": "^10.9.1",
     "twrnc": "^3.6.1",
     "zustand": "^4.3.8"
   },

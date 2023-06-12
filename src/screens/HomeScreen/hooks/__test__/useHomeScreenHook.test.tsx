@@ -17,7 +17,7 @@ describe('useHomeScreenHook', () => {
       error: false,
       loading: false,
       data: [],
-      searchByUserName: jest.fn(),
+      searchByUserName: (text: string) => jest.fn(),
       closeError: jest.fn(),
     });
   });
@@ -31,7 +31,7 @@ describe('useHomeScreenHook', () => {
     expect(result.current.searchText).toBe('');
   });
 
-  it('should call onSearchName, after that searchText will change', async () => {
+  it('should call onSearchName, after that searchText will change', () => {
     const { result } = renderHook(() => useHomeScreenHook());
     result.current.onSearchName('hello');
 

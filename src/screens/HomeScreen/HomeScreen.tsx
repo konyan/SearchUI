@@ -1,30 +1,11 @@
 import { ErrorModal, ListItem, SearchBar } from '@components';
-import { tw, useStore } from '@core';
-import React, { useEffect, useState } from 'react';
+import { tw } from '@core';
+import React from 'react';
 import { FlatList, View } from 'react-native';
 import { PacmanIndicator } from 'react-native-indicators';
-import { Data } from 'src/hooks/useDataHook';
+import useHomeScreenHook from './hooks/useHomeScreenHook';
 const HomeScreen = () => {
-  const [searchText, setSearchText] = useState<string>('');
-
-  const { error, loading, data: result } = useStore((state) => state);
-
-  const searchByUserName = useStore((state) => state.searchByUserName);
-
-  const closeErrorModal = useStore((state) => state.closeError);
-
-  useEffect(() => {
-    if (error) {
-    }
-  }, [error]);
-
-  const onSearchName = (text: string) => {
-    setSearchText(text);
-  };
-
-  const onSearchUsername = () => {
-    searchByUserName(searchText);
-  };
+  const { searchText, loading, onSearchName, onSearchUsername, error, closeErrorModal, result } = useHomeScreenHook();
 
   return (
     <View style={tw`flex-1 px-4 items-start justify-start`}>
@@ -36,7 +17,7 @@ const HomeScreen = () => {
       />
 
       {loading && (
-        <View style={tw`flex-1 w-full justify-center items-center`}>
+        <View style={tw`flex-1 w-full z-10 justify-center items-center absolute top-40`}>
           <PacmanIndicator color="red" />
         </View>
       )}
@@ -55,7 +36,7 @@ const HomeScreen = () => {
             isSearchResult={item.name.toLowerCase().includes(searchText.toLowerCase())}
           />
         )}
-        keyExtractor={(item: Data) => item.uid}
+        keyExtractor={(item) => item.uid}
       />
     </View>
   );

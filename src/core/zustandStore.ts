@@ -1,7 +1,17 @@
 /* eslint-disable max-nested-callbacks */
-import { Data } from 'src/hooks/useDataHook';
 import { create } from 'zustand';
 import JsonData from '../../data/leaderboard.json';
+
+export interface Data {
+  bananas: number;
+  lastDayPlayed: string;
+  longestStreak: number;
+  name: string;
+  stars: number;
+  subscribed: boolean;
+  uid: string;
+  rank?: number;
+}
 
 const getInitData = (): Data[] => {
   const jsonArray: { [key: string]: Data } = JsonData;

@@ -2,7 +2,7 @@ import { ListItem, SearchBar } from '@components';
 import { tw } from '@core';
 import { useDataHook } from '@hooks';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Data } from 'src/hooks/useDataHook';
 
 const HomeScreen = () => {
@@ -17,29 +17,52 @@ const HomeScreen = () => {
   };
 
   const onSearchUsername = () => {
-    console.log('SEARCH USER', searchText);
-
-    // sort by stars and slice to 10
-
-    const top10User = LeaderBoardData.sort((a, b) => {
+    const sortUser = LeaderBoardData.sort((a, b) => {
       return b.bananas - a.bananas;
-    }).slice(0, 10);
-    setResult(top10User);
+    }).map((item, index) => {
+      return {
+        ...item,
+        rank: index + 1,
+      };
+    });
+
+    const filteredResult = sortUser.filter((item, index) => item.name.toLowerCase().includes(searchText.toLowerCase()));
+    if (filteredResult.length > 0) {
+      const resultUser = filteredResult[0];
+      if (resultUser?.rank <= 10) {
+        const updateUser = sortUser.slice(0, 10);
+        setResult(updateUser);
+      } else {
+        const updateUser = sortUser.slice(0, 9).concat(resultUser);
+        setResult(updateUser);
+      }
+    }
   };
 
   return (
-    <View style={tw`flex px-4 items-start justify-start`}>
+    <View style={tw`flex-1 px-4 items-start justify-start`}>
       <SearchBar
         value={searchText}
         onChangeText={onSearchName}
         placeholder="Search username"
         onSearch={onSearchUsername}
       />
-      {result?.map((item, index) => {
-        return (
-          <ListItem key={item.uid} name={item.name} rank={index + 1} bananaCount={item.bananas} isSearchResult={true} />
-        );
-      })}
+      <FlatList
+        style={tw`w-full mb-8`}
+        scrollEnabled={true}
+        showsVerticalScrollIndicator={false}
+        data={result}
+        renderItem={({ item }) => (
+          <ListItem
+            key={item.uid}
+            name={item.name}
+            rank={item.rank}
+            bananaCount={item.bananas}
+            isSearchResult={item.name.toLowerCase().includes(searchText.toLowerCase())}
+          />
+        )}
+        keyExtractor={(item: Data) => item.uid}
+      />
     </View>
   );
 };

@@ -9,6 +9,7 @@ export interface Data {
   stars: number;
   subscribed: boolean;
   uid: string;
+  rank?: number;
 }
 
 const useDataHook = () => {

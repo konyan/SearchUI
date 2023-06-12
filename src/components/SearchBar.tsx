@@ -1,4 +1,4 @@
-import { CloseIcon, SearchIcon } from '@svgIcons';
+import { SearchIcon } from '@svgIcons';
 import { useRef } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 import { tw } from 'src/core/tw';

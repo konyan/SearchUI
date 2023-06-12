@@ -4,7 +4,7 @@ import { Image, Text, View } from 'react-native';
 
 interface ListItemProps {
   name: string;
-  rank: number;
+  rank?: number;
   bananaCount: number;
   isSearchResult?: boolean;
 }
@@ -18,7 +18,7 @@ const ListItem = ({ name, rank, bananaCount, isSearchResult }: ListItemProps) =>
       ]}
     >
       <View style={tw`flex w-1/4 rounded-full bg-red-500 w-8 h-8 justify-center items-center mx-2`}>
-        <Text style={tw`font-FiraMono-Medium text-base`}>{rank}</Text>
+        <Text style={tw`font-FiraMono-Medium text-base`}>{rank && rank}</Text>
       </View>
       <View style={tw`flex w-3/4 p-2`}>
         <Text style={tw`text-xl font-FiraMono-Bold`}>{name}</Text>

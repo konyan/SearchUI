@@ -17,6 +17,7 @@ export const CustomStatusBar = ({ backgroundColor }: CustomStatusBarProps) => {
           backgroundColor,
         },
       ]}
+      testID="status_bar"
     >
       <ExpoStatusBar style="dark" backgroundColor={backgroundColor} />
     </SafeAreaView>

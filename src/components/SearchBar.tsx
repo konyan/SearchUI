@@ -19,7 +19,7 @@ const SearchBar = ({ placeholder, value, onChangeText, onSearch }: SearchBarProp
     >
       <View style={tw`mx-4`}></View>
       <TextInput
-        testID="SEARCH.INPUT"
+        testID="txt_input"
         style={[
           tw`flex-auto text-black w-auto text-base py-4 text-left items-start justify-start font-normal pr-12 w-full`,
           { fontFamily: 'FiraMono-Regular' },

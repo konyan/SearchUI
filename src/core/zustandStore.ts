@@ -12,7 +12,9 @@ const getInitData = (): Data[] => {
 interface IState {
   data: Data[];
   loading: boolean;
+  error: boolean;
   searchByUserName: (userName: string) => void;
+  closeError: () => void;
 }
 
 export const useStore = create<IState>((set, get) => ({
@@ -42,8 +44,14 @@ export const useStore = create<IState>((set, get) => ({
           const updateUser = sortUser.slice(0, 9).concat(resultUser);
           set({ data: updateUser, loading: false });
         }
+      } else {
+        set({ data: [], loading: false, error: true });
       }
     }, 2000);
   },
   loading: false,
+  error: false,
+  closeError: () => {
+    set({ error: false });
+  },
 }));

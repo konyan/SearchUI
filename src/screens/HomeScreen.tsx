@@ -1,17 +1,22 @@
-import { ListItem, SearchBar } from '@components';
+import { ErrorModal, ListItem, SearchBar } from '@components';
 import { tw, useStore } from '@core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { PacmanIndicator } from 'react-native-indicators';
 import { Data } from 'src/hooks/useDataHook';
 const HomeScreen = () => {
   const [searchText, setSearchText] = useState<string>('');
 
-  const result = useStore((state) => state.data);
-
-  const loading = true; // = useStore((state) => state.loading);
+  const { error, loading, data: result } = useStore((state) => state);
 
   const searchByUserName = useStore((state) => state.searchByUserName);
+
+  const closeErrorModal = useStore((state) => state.closeError);
+
+  useEffect(() => {
+    if (error) {
+    }
+  }, [error]);
 
   const onSearchName = (text: string) => {
     setSearchText(text);
@@ -35,6 +40,7 @@ const HomeScreen = () => {
           <PacmanIndicator color="red" />
         </View>
       )}
+      {error && <ErrorModal error={error} setModalVisible={closeErrorModal} />}
       <FlatList
         style={tw`w-full mb-8`}
         scrollEnabled={true}

@@ -1,15 +1,15 @@
 import { ListItem, SearchBar } from '@components';
 import { tw, useStore } from '@core';
 import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
+import { PacmanIndicator } from 'react-native-indicators';
 import { Data } from 'src/hooks/useDataHook';
-
 const HomeScreen = () => {
   const [searchText, setSearchText] = useState<string>('');
 
   const result = useStore((state) => state.data);
 
-  const loading = useStore((state) => state.loading);
+  const loading = true; // = useStore((state) => state.loading);
 
   const searchByUserName = useStore((state) => state.searchByUserName);
 
@@ -31,8 +31,8 @@ const HomeScreen = () => {
       />
 
       {loading && (
-        <View>
-          <Text>loading..</Text>
+        <View style={tw`flex-1 w-full justify-center items-center`}>
+          <PacmanIndicator color="red" />
         </View>
       )}
       <FlatList
